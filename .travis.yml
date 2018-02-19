@@ -11,7 +11,7 @@ env:
 script:
 # build the image
 - docker build -f ./simple-app/Dockerfile -t simple-app ./simple-app
-- '[ $? -ne 0 ] && exit 1'
+#- '[ $? -ne 0 ] && exit 1'
 
 # verify image build
 - docker run --rm --name simple-app -dp 5000:5000 simple-app
