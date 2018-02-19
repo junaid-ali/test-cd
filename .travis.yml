@@ -1,6 +1,6 @@
 language: python
 sudo: true
-dist: xenial
+dist: trusty
 env:
   global:
     - DOCKER_REPO=junaidali/devops
