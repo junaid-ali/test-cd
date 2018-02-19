@@ -10,7 +10,7 @@ env:
 
 script:
 # build the image
-- docker build -t devops/simple-app . && [ $? -ne 0 ] && exit 1
+- docker build -f ./simple-app/Dockerfile -t ./simple-app . && [ $? -ne 0 ] && exit 1
 
 # verify image build
 - docker run --rm --name simple-app -dp 5000:5000 simple-app
