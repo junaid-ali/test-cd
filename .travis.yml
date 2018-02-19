@@ -26,7 +26,7 @@ after_success:
 - docker tag simple-app ${BUILD_IMAGE_PATH}
 - docker push ${BUILD_IMAGE_PATH}
 - |
-  if [[ ${TRAVIS_TAG} =~ ^rel.*$ ]]; then
+  if [[ ${TRAVIS_TAG} =~ ^v*$ ]]; then
     docker tag simple-app ${RELEASE_IMAGE_PATH}
     docker push ${RELEASE_IMAGE_PATH}
   fi
@@ -36,4 +36,4 @@ deploy:
   script: simple/deployment/deploy.sh
   on:
     tags: true
-    condition: "${TRAVIS_TAG} =~ ^rel.*$"
+    condition: "${TRAVIS_TAG} =~ ^v*$"
