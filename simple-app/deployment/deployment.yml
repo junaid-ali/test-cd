@@ -4,6 +4,9 @@ metadata:
   name: simple-app
 spec:
   replicas: 3
+  selector:
+    matchLables:
+      app: nginx
   template:
     metadata:
       labels:
