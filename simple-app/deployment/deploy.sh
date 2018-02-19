@@ -13,6 +13,6 @@ kubectl config set-context myctxt --cluster=mycluster --user=mysa
 kubectl config use-context myctxt
 
 # deploy
-sed -i s@{{IMAGE_PATH}}@${RELEASE_IMAGE_PATH}@g deployment/deployment.yml
-kubectl apply -f deployment -n ${RELEASE_TARGET_NAMESPACE}
-kubectl rollout status -f deployment/deployment.yml -n ${RELEASE_TARGET_NAMESPACE}
+sed -i s@{{IMAGE_PATH}}@${RELEASE_IMAGE_PATH}@g simple-app/deployment/deployment.yml
+kubectl apply -f simple-app/deployment -n ${RELEASE_TARGET_NAMESPACE}
+kubectl rollout status -f simple-app/deployment/deployment.yml -n ${RELEASE_TARGET_NAMESPACE}
