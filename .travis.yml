@@ -34,7 +34,7 @@ after_success:
 
 deploy:
   provider: script
-  script: simple-app/deployment/deploy.sh
+  script: bash simple-app/deployment/deploy.sh
   on:
-    tags: true
+    branch: master
     condition: "${TRAVIS_TAG} =~ ^v.*$"
