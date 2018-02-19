@@ -37,4 +37,4 @@ deploy:
   script: simple/deployment/deploy.sh
   on:
     tags: true
-    condition: "${TRAVIS_TAG} =~ ^v*$"
+    condition: "${TRAVIS_TAG} =~ ^v.*$"
