@@ -1,0 +1,37 @@
+sudo: true
+dist: xenial
+env:
+  global:
+    - DOCKER_REPO=junaidali/devops
+    - BUILD_IMAGE_PATH=${DOCKER_REPO}:build-${TRAVIS_BUILD_NUMBER}
+    - RELEASE_IMAGE_PATH=${DOCKER_REPO}:${TRAVIS_TAG}
+    - RELEASE_TARGET_NAMESPACE=cd
+
+script:
+# build the image
+- docker build -t devops/simple-app .
+
+# verify image build
+- docker run --rm --name simple-app -dep 5000:5000 simple-app
+# Wait for 10 secs for the image to be downloaded and run the simple-app instance
+- sleep 10
+- CODE=$(curl -IXGET -so /dev/null -w "%{http_code}" localhost:5000)
+- [ ${CODE} -eq "200" ] && echo "Image is ready!"
+- docker stop simple-app
+
+after_success:
+- docker login -u ${CI_ENV_REGISTRY_USER} -p "${CI_ENV_REGISTRY_PASS}"
+- docker tag simple-app ${BUILD_IMAGE_PATH}
+- docker push ${BUILD_IMAGE_PATH}
+- |
+  if [[ ${TRAVIS_TAG} =~ ^rel.*$ ]]; then
+    docker tag simple-app ${RELEASE_IMAGE_PATH}
+    docker push ${RELEASE_IMAGE_PATH}
+  fi
+
+deploy:
+  provider: script
+  script: simple/deployment/deploy.sh
+  on:
+    tags: true
+    condition: "${TRAVIS_TAG} =~ ^rel.*$"
