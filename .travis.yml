@@ -1,3 +1,4 @@
+language: python
 sudo: true
 dist: xenial
 env:
@@ -16,7 +17,7 @@ script:
 # Wait for 10 secs for the image to be downloaded and run the simple-app instance
 - sleep 10
 - CODE=$(curl -IXGET -so /dev/null -w "%{http_code}" localhost:5000)
-- [ ${CODE} -eq "200" ] && echo "Image is ready!"
+- '[ ${CODE} -eq "200" ] && echo "Image is ready!"'
 - docker stop simple-app
 
 after_success:
