@@ -27,7 +27,7 @@ after_success:
 - docker push ${BUILD_IMAGE_PATH}
 - echo ${TRAVIS_TAG}
 - |
-  if [[ ${TRAVIS_TAG} =~ ^v*$ ]]; then
+  if [[ ${TRAVIS_TAG} =~ ^v.*$ ]]; then
     docker tag simple-app ${RELEASE_IMAGE_PATH}
     docker push ${RELEASE_IMAGE_PATH}
   fi
