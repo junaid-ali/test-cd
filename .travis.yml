@@ -25,6 +25,7 @@ after_success:
 - docker login -u ${CI_ENV_REGISTRY_USER} -p "${CI_ENV_REGISTRY_PASS}"
 - docker tag simple-app ${BUILD_IMAGE_PATH}
 - docker push ${BUILD_IMAGE_PATH}
+- echo ${TRAVIS_TAG}
 - |
   if [[ ${TRAVIS_TAG} =~ ^v*$ ]]; then
     docker tag simple-app ${RELEASE_IMAGE_PATH}
