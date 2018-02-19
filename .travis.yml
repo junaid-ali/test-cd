@@ -10,10 +10,10 @@ env:
 
 script:
 # build the image
-- docker build -t devops/simple-app .
+- docker build -t devops/simple-app . && [ $? -ne 0 ] && exit 1
 
 # verify image build
-- docker run --rm --name simple-app -dep 5000:5000 simple-app
+- docker run --rm --name simple-app -dp 5000:5000 simple-app
 # Wait for 10 secs for the image to be downloaded and run the simple-app instance
 - sleep 10
 - CODE=$(curl -IXGET -so /dev/null -w "%{http_code}" localhost:5000)
