@@ -18,7 +18,7 @@ while [ $# -gt 0 ]; do
     -n | --namespace ) shift
       if [[ -z $1 ]];
       then
-  	    NAMESPACE="cd"
+        NAMESPACE="cd"
       else
         NAMESPACE=$1
       fi
@@ -36,6 +36,9 @@ while [ $# -gt 0 ]; do
   esac
   shift
 done
+
+[[ -z $NAMESPACE ]] && NAMESPACE="cd"
+[[ -z $ACCOUNT_NAME ]] && ACCOUNT_NAME="cd-agent"
 
 # get API endpoint of current cluster
 CURR_CXT=$(kubectl config current-context)
