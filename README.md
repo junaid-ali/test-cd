@@ -12,4 +12,5 @@ Variables to expose to Travis CI/CD job
 |`CI_ENV_REGISTRY_PASS`         |Docker Hub password                   |
 
 Test line for Spinnaker - retry
+
 Retry after token generation
