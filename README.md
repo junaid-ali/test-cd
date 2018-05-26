@@ -14,3 +14,5 @@ Variables to expose to Travis CI/CD job
 Test line for Spinnaker - retry
 
 Retry after token generation
+
+Trigger still not working
