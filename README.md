@@ -10,3 +10,4 @@ Variables to expose to Travis CI/CD job
 |`CI_ENV_K8S_SA_TOKEN`          |Service account token                 |
 |`CI_ENV_REGISTRY_USER`         |Docker Hub username                   |
 |`CI_ENV_REGISTRY_PASS`         |Docker Hub password                   |
+
