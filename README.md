@@ -1,7 +1,7 @@
 # A simple CI/CD workflow with Travis CI and Kubernetes
 [![Build Status](https://travis-ci.org/junaid-ali/test-cd.svg?branch=master)](https://travis-ci.org/junaid-ali/test-cd)
 
-Variables to expose to Travis CI/CD job
+Variables required for Travis CI/CD job
 
 |Var                            |Description                           |
 |-------------------------------|--------------------------------------|
